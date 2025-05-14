@@ -22,7 +22,14 @@ void free_ran_param_lst_struct(ran_param_lst_struct_t* src)
   // RAN Parameter Definition
   // Optional
   // 9.3.51
-  assert(src->ran_param_def == NULL && "Not implemented");
+  if(src->ran_param_def != NULL){
+    if(src->ran_param_def->type == LIST_RAN_PARAMETER_DEF_TYPE){
+      free_ran_param_type(src->ran_param_def->lst);
+    } else if(src->ran_param_def->type == STRUCTURE_RAN_PARAMETER_DEF_TYPE){
+      free_ran_param_type(src->ran_param_def->strct);
+    }
+  }
+  // assert(src->ran_param_def == NULL && "Not implemented");
 }
 
 bool eq_ran_param_lst_struct(ran_param_lst_struct_t const* m0, ran_param_lst_struct_t const* m1)
