@@ -942,7 +942,6 @@ RANParameter_Definition_Choice_LIST_t enc_ran_param_def_lst(ran_param_type_t* co
     // assert(src->ran_param[i].ran_param_def == NULL && "Not implemented");
     // TODO needs to be implemented
     if(src->ran_param[i].ran_param_def != NULL){
-      printf("RAN Parameter Definition List is not NULL\n");
       list_item->ranParameter_Definition = calloc(1, sizeof(RANParameter_Definition_t));
       assert(list_item->ranParameter_Definition != NULL && "Memory exhausted");
       *list_item->ranParameter_Definition = enc_ran_param_def(src->ran_param[i].ran_param_def);
@@ -984,7 +983,6 @@ RANParameter_Definition_Choice_STRUCTURE_t enc_ran_param_def_strct(ran_param_typ
     // 9.3.51
     // assert(src->ran_param[i].ran_param_def == NULL && "Not implemented");
     if(src->ran_param[i].ran_param_def != NULL){
-      printf("RAN Parameter Definition Struct is not NULL\n");
       list_item->ranParameter_Definition = calloc(1, sizeof(RANParameter_Definition_t));
       assert(list_item->ranParameter_Definition != NULL && "Memory exhausted");
       *list_item->ranParameter_Definition = enc_ran_param_def(src->ran_param[i].ran_param_def);
