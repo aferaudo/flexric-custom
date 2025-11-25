@@ -187,8 +187,12 @@ kpm_ind_msg_t kpm_dec_ind_msg_asn(size_t len, uint8_t const ind_msg[len])
 
   const enum asn_transfer_syntax syntax = ATS_ALIGNED_BASIC_PER;
   const asn_dec_rval_t rval = asn_decode(NULL, syntax, &asn_DEF_E2SM_KPM_IndicationMessage, (void**)&pdu, ind_msg, len);
-  assert(rval.code == RC_OK && "Are you sending data in ATS_ALIGNED_BASIC_PER syntax?");
-
+  // assert(rval.code == RC_OK && "Are you sending data in ATS_ALIGNED_BASIC_PER syntax?");
+  if(rval.code == RC_OK)
+  {
+    free(pdu);
+    return ret; // empty indication header
+  }
 //  xer_fprint(stderr, &asn_DEF_E2SM_KPM_IndicationMessage, pdu);
 
 
