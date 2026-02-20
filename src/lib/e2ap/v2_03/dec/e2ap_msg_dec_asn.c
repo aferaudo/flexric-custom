@@ -782,7 +782,9 @@ e2ap_msg_t e2ap_dec_subscription_delete_request(const E2AP_PDU_t* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_RICsubscriptionDelete); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_RICsubscriptionDeleteRequest); 
 
   const RICsubscriptionDeleteRequest_t* out = &pdu->choice.initiatingMessage->value.choice.RICsubscriptionDeleteRequest;
@@ -1426,7 +1428,9 @@ e2ap_msg_t e2ap_dec_error_indication(const E2AP_PDU_t* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_ErrorIndication); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_ErrorIndication); 
 
   const ErrorIndication_t* out = &pdu->choice.initiatingMessage->value.choice.ErrorIndication;
@@ -1478,7 +1482,9 @@ e2ap_msg_t e2ap_dec_setup_request(const E2AP_PDU_t* pdu)
   assert(pdu != NULL);
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_E2setup);
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_E2setupRequest);
 
   e2ap_msg_t ret = {.type = E2_SETUP_REQUEST};
@@ -1937,7 +1943,9 @@ e2ap_msg_t e2ap_dec_reset_request(const E2AP_PDU_t* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage); 
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_Reset); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_ResetRequest); 
 
   const ResetRequest_t* out = &pdu->choice.initiatingMessage->value.choice.ResetRequest;
@@ -2008,7 +2016,9 @@ e2ap_msg_t e2ap_dec_service_update(const E2AP_PDU_t* pdu)
   // Message Type
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_RICserviceUpdate);
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_RICserviceUpdate);
 
   const RICserviceUpdate_t *out = &pdu->choice.initiatingMessage->value.choice.RICserviceUpdate;
@@ -2218,7 +2228,9 @@ e2ap_msg_t e2ap_dec_service_query(const E2AP_PDU_t* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage); 
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_RICserviceQuery); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_RICserviceQuery); 
 
   const RICserviceQuery_t* out = &pdu->choice.initiatingMessage->value.choice.RICserviceQuery; 
@@ -2260,7 +2272,9 @@ e2ap_msg_t e2ap_dec_node_configuration_update(const E2AP_PDU_t* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage); 
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_E2nodeConfigurationUpdate); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_E2nodeConfigurationUpdate); 
 
   const E2nodeConfigurationUpdate_t* out = &pdu->choice.initiatingMessage->value.choice.E2nodeConfigurationUpdate; 
@@ -2377,7 +2391,9 @@ e2ap_msg_t e2ap_dec_e42_setup_request(const struct E2AP_PDU* pdu)
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
 
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_E42setup);
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_E42setupRequest);
 
   e2ap_msg_t ret = {.type = E42_SETUP_REQUEST};
@@ -2577,7 +2593,9 @@ e2ap_msg_t e2ap_dec_e42_subscription_delete_request(const struct E2AP_PDU* pdu)
   // Message Type. Mandatory
   assert(pdu->present == E2AP_PDU_PR_initiatingMessage);
   assert(pdu->choice.initiatingMessage->procedureCode == ProcedureCode_id_E42RICsubscriptionDelete); 
-  assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
+  // the O-RAN RIC wrongly sets the criticality -- we ignore it for
+  // interoperatibility for the moment
+  //assert(pdu->choice.initiatingMessage->criticality == Criticality_reject);
   assert(pdu->choice.initiatingMessage->value.present == InitiatingMessage__value_PR_E42RICsubscriptionDeleteRequest); 
 
   const E42RICsubscriptionDeleteRequest_t* out = &pdu->choice.initiatingMessage->value.choice.E42RICsubscriptionDeleteRequest;
